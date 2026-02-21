@@ -48,4 +48,18 @@ Fraud detection is a highly imbalanced classification problem; therefore, model 
 - **ROC-AUC:** Evaluates the model’s ability to rank fraudulent transactions higher than legitimate ones across thresholds.  
 - **Confusion Matrix:** Provides a detailed breakdown of true positives, false positives, true negatives, and false negatives.
 
-The evaluation results show that the model is able to capture meaningful fraud patterns from the synthetic data while maintaining a reasonable trade-off between catching fraudulent transactions and limiting false positives. Threshold tuning can further adjust this trade-off based on business requirements.
+The evaluation results show that the model is able to capture meaningful fraud patterns from the synthetic data while maintaining a reasonable trade-off between catching fraudulent transactions and limiting false positives. Threshold tuning can further adjust this trade-off based on 
+business requirements.
+
+
+
+## System Design 
+
+- The trained fraud detection model would be deployed as a real-time scoring service.
+- Incoming transactions would be enriched with recent user behavior features before scoring.
+- The model outputs a fraud probability score for each transaction.
+- High-risk transactions could be blocked or trigger OTP verification.
+- Medium-risk transactions could be flagged for manual review.
+- Batch detection jobs could periodically scan historical data for slower fraud patterns.
+- Feedback from analysts on false positives/negatives would be used to retrain the model.
+- Model performance and data drift would be monitored over time.
